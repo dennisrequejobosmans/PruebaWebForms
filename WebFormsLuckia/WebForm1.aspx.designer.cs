@@ -139,6 +139,15 @@ namespace WebFormsLuckia {
         protected global::System.Web.UI.WebControls.TextBox TextBox7;
         
         /// <summary>
+        /// Control LabelErrores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelErrores;
+        
+        /// <summary>
         /// Control Boton.
         /// </summary>
         /// <remarks>
@@ -148,12 +157,12 @@ namespace WebFormsLuckia {
         protected global::System.Web.UI.WebControls.Button Boton;
         
         /// <summary>
-        /// Control Listbox1.
+        /// Control ContadorEmpleados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox Listbox1;
+        protected global::System.Web.UI.WebControls.Label ContadorEmpleados;
     }
 }

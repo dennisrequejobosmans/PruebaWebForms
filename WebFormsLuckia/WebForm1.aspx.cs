@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Collections;
 
 namespace WebFormsLuckia
 {
@@ -12,7 +13,7 @@ namespace WebFormsLuckia
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ContadorEmpleados.Text += numPersonas();
         }
 
         protected void Boton_Click(object sender, EventArgs e)
@@ -21,15 +22,15 @@ namespace WebFormsLuckia
 
             if (TextBox6.Text != TextBox7.Text)
             {
-                Listbox1.Visible = true;
-                Listbox1.Items.Add("Error, las contraseñas no coinciden");
+                LabelErrores.Visible = true;
+                LabelErrores.Text = "Error, las contraseñas no coinciden";
                 System.Threading.Thread.Sleep(1000);
             }
 
             else
             {
-                Listbox1.Visible = false;
-                Listbox1.Items.Clear();
+                LabelErrores.Visible = false;
+                LabelErrores.Text = "";
 
                 try
                 {
@@ -42,13 +43,15 @@ namespace WebFormsLuckia
                 }
                 catch(FormatException ExFormat)
                 {
-                    Listbox1.Items.Add("El formato introducido en alguno de los campos no es correcto");
-                    Listbox1.Items.Add(ExFormat.Message);
+
+                    LabelErrores.Text = "El formato introducido no es correcto";
+                    LabelErrores.Text = ExFormat.Message;
                 }
                 catch(Exception Ex)
                 {
-                    Listbox1.Items.Add("Ha ocurrido un error");
-                    Listbox1.Items.Add(Ex.Message);
+
+                    LabelErrores.Text = "Ha ocurrido un error";
+                    LabelErrores.Text = Ex.Message;
                 }
 
 
@@ -72,8 +75,18 @@ namespace WebFormsLuckia
 
                 cmd.ExecuteNonQuery();
                 con.Close();
+
+                Page.Response.Redirect(Page.Request.Url.ToString(), true);
             }
 
+        }
+
+        public int numPersonas()
+        {
+
+            Personas.LoadPersonas();
+
+            return Personas.personas.Count;
         }
     }
 }
